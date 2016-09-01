@@ -48,7 +48,7 @@ public class NotebookController {
 
         return  userService.findByMail(mail)
                 .map(user -> {
-                    if(user==null){
+                    if(user!=null){
                         Notebook notebook = notebookService.findByUserMailAndId(mail,input.getId());
                         if(notebook != null){
                             Notebook result = notebookService.saveNotebook(input);
