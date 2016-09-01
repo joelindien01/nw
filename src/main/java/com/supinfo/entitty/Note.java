@@ -1,5 +1,7 @@
 package com.supinfo.entitty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,7 +24,26 @@ public class Note {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Image> images;
 
+    @ManyToOne
+    @JsonIgnore
+    private Notebook notebook;
+
     public Note() {
+    }
+
+    public Note(String title, String textualContent, List<Image> images, Notebook notebook) {
+        this.title = title;
+        this.textualContent = textualContent;
+        this.images = images;
+        this.notebook = notebook;
+    }
+
+    public Notebook getNotebook() {
+        return notebook;
+    }
+
+    public void setNotebook(Notebook notebook) {
+        this.notebook = notebook;
     }
 
     public Long getId() {

@@ -7,11 +7,11 @@ import com.supinfo.entitty.Note;
  */
 public interface NoteService {
 
-    void createNote(Note note);
+    Note createNote(Note note);
 
     void deleteNote(Note note);
 
-    void getNote(Long id);
+    Note getNote(Long id);
 
-    void updateNote(Note note);
+    Note updateNote(Note note);
 }
