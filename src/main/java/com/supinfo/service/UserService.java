@@ -2,6 +2,7 @@ package com.supinfo.service;
 
 import com.supinfo.entitty.User;
 
+import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -18,4 +19,8 @@ public interface UserService {
     void deleteUser(User user);
 
     User updateUser(User user);
+
+    void createUserSpace(User user);
+
+    void deleteUserSpace(User user) throws IOException;
 }

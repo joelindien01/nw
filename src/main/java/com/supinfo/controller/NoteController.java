@@ -63,7 +63,7 @@ public class NoteController {
                                     errorList.add("Folder separators not allowed..file named " + name + " will be not add");
                                 } else {
 
-                                    String projectFolder = getProjectFolder();
+                                    String projectFolder = NeverWriteApplication.getProjectFolder();
                                     try {
                                         String original_name = file.getOriginalFilename()+"_"+(new Date()).getTime();
                                         images.add(new Image(original_name));
@@ -90,17 +90,6 @@ public class NoteController {
                     return new ResponseEntity<Notebook>(null, null, HttpStatus.NOT_FOUND);
 
                 }).get();
-    }
-
-    private String getProjectFolder() {
-        URI uri = null;
-        try {
-            uri = new ClassPathResource("application.yaml").getURI();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        File fullPathToSubfolder = new File(uri).getAbsoluteFile();
-        return fullPathToSubfolder.getAbsolutePath().split("target")[0];
     }
 
     @RequestMapping(value = "/{noteId}", method = RequestMethod.GET)
